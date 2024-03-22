@@ -1,4 +1,4 @@
-import { Button, Image, StatusBar, View } from "react-native";
+import { Button, Image, StatusBar, View, Text } from "react-native";
 import { useState, useEffect } from "react";
 
 /* IMportando so recursos da API nativa/móvel */
@@ -49,11 +49,16 @@ export default function App() {
       <StatusBar style="auto" />
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Button title="Escolher foto" onPress={escolherFoto} />
-        <Image
-          style={{ width: 300, height: 300 }}
-          source={foto}
-          contentFit="cover"
-        />
+
+        {foto ? (
+          <Image
+            style={{ width: 300, height: 300 }}
+            source={foto}
+            contentFit="cover"
+          />
+        ) : (
+          <Text>Sem foto!</Text>
+        )}
       </View>
     </>
   );
