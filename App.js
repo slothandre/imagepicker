@@ -24,7 +24,11 @@ export default function App() {
     verificaPermissoes();
   }, []);
 
+  /* Ao pressionar o botão, excecuta esta função */
   const escolherFoto = async () => {
+    /* Acessando via ImagePicker a biblioteca
+    para seleção de apenas imagens, com recurso de edição habilitado,
+    proporção 16,9 e qualidade total.  */
     const resultado = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -32,6 +36,8 @@ export default function App() {
       quality: 1,
     });
 
+    /* Se o usuário não cancelar a operação, pegamos a
+    imagem e colocamos no state */
     if (!resultado.canceled) {
       setFoto(resultado.assets[0].uri);
     }
